@@ -44,8 +44,9 @@ export default function NewNotePage() {
       
       router.push('/notes');
       router.refresh();
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      const msg = error instanceof Error ? error.message : String(error);
+      setError(msg);
     } finally {
       setLoading(false);
     }

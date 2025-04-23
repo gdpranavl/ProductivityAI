@@ -39,7 +39,7 @@ export default function NotePage() {
         if (error) throw error;
         
         setNote(data);
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('Error fetching note:', error);
         setError('Failed to load note. It may have been deleted or you may not have permission to view it.');
       } finally {
@@ -53,6 +53,7 @@ export default function NotePage() {
   }, [id]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     if (searchParams.get('autoSummarize') === 'true' && note) {
       handleGenerateSummary();
     }
@@ -99,8 +100,9 @@ export default function NotePage() {
         .update({ summary: data.summary })
         .eq('id', id);
       if (supError) throw supError;
-    } catch (err: any) {
-      setErrorSummary(err.message || 'Error generating summary');
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setErrorSummary(msg);
     } finally {
       setLoadingSummary(false);
     }

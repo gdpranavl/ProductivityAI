@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { BookOpen } from 'lucide-react';
 import { FcGoogle } from 'react-icons/fc';
 import { Eye, EyeOff } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Signup() {
   const [email, setEmail] = useState('');
@@ -30,8 +31,9 @@ export default function Signup() {
       
       alert('Check your email for the confirmation link!');
       router.push('/login');
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      const msg = error instanceof Error ? error.message : String(error);
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -127,10 +129,11 @@ export default function Signup() {
         </div>
       </div>
       <div className="bg-muted relative hidden lg:block">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1520885708668-9ef025710520?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="High-quality stock notes image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          fill
+          className="object-cover dark:brightness-[0.2] dark:grayscale"
         />
       </div>
     </div>

@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// e.g. src/app/layout.tsx
-import { createClient } from '@supabase/supabase-js'
-import { cookies } from 'next/headers'
-
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
-const { data: { session } } = await supabase.auth.getSession()
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

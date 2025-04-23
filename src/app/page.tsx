@@ -12,6 +12,8 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
+import { FileText, Cpu, Tag, CheckSquare, Users } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Home() {
   const router = useRouter();
@@ -29,25 +31,26 @@ export default function Home() {
 
   return (
     <main className="relative flex flex-col items-center px-6 py-16 space-y-20 bg-gradient-to-br from-purple-100 via-white to-blue-100">
-      <h1 className="text-5xl sm:text-6xl font-extrabold mb-8 text-primary">
-        Welcome to Productivity App
-      </h1>
-      <p className="text-xl mb-4 max-w-md">
-        A simple app to create, view, and manage your personal notes with AI-powered summaries.
-      </p>
-      <ul className="text-left list-disc list-inside mb-8 max-w-md space-y-2">
-        <li>Create, edit, and delete notes</li>
-        <li>Generate AI-powered summaries of your content</li>
-        <li>Organize and search notes efficiently</li>
-      </ul>
-      <div className="flex gap-4">
-        <Button onClick={() => router.push('/login')}>
-          Log In
-        </Button>
-        <Button variant="outline" onClick={() => router.push('/signup')}>
-          Sign Up
-        </Button>
-      </div>
+      {/* Hero Section */}
+      <section className="grid md:grid-cols-2 items-center gap-8 max-w-6xl w-full">
+        <div className="space-y-6">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-primary">Welcome to <i>the</i> Productivity App</h1>
+          <p className="text-lg text-gray-700">All-in-one productivity suite: notes, AI summaries, to-dos & collaboration.</p>
+          <div className="flex gap-4">
+            <Button onClick={() => router.push('/login')}>Log In</Button>
+            <Button variant="outline" onClick={() => router.push('/signup')}>Sign Up</Button>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <Image
+            src="https://plus.unsplash.com/premium_photo-1705010662538-87ed292fdd5e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZHVjdGl2ZXxlbnwwfHwwfHx8MA%3D%3D"
+            alt="Productivity illustration"
+            width={384}
+            height={288}
+            className="rounded-xl shadow-lg w-full max-w-sm"
+          />
+        </div>
+      </section>
       {/* Feature Cards Carousel */}
       <section className="w-full max-w-6xl">
         <h2 className="text-3xl font-semibold mb-6">Features</h2>
@@ -57,35 +60,50 @@ export default function Home() {
               <CardTitle>Create Notes</CardTitle>
               <CardDescription>Quickly jot down ideas</CardDescription>
             </CardHeader>
-            <CardContent>Markdown support, tags, and more.</CardContent>
+            <CardContent className="flex items-center gap-2">
+              <FileText className="h-6 w-6 text-primary" />
+              Markdown support, tags, and more.
+            </CardContent>
           </Card>
           <Card className="min-w-[18rem] snap-start bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
             <CardHeader>
               <CardTitle>AI Summaries</CardTitle>
               <CardDescription>Get concise summaries</CardDescription>
             </CardHeader>
-            <CardContent>Powered by Gemini 2.0 Flash.</CardContent>
+            <CardContent className="flex items-center gap-2">
+              <Cpu className="h-6 w-6 text-primary" />
+              Powered by Gemini 2.0 Flash.
+            </CardContent>
           </Card>
           <Card className="min-w-[18rem] snap-start bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
             <CardHeader>
               <CardTitle>Organize</CardTitle>
               <CardDescription>Tags and search</CardDescription>
             </CardHeader>
-            <CardContent>Easily find your notes.</CardContent>
+            <CardContent className="flex items-center gap-2">
+              <Tag className="h-6 w-6 text-primary" />
+              Easily find your notes.
+            </CardContent>
           </Card>
           <Card className="min-w-[18rem] snap-start bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
             <CardHeader>
               <CardTitle>To-Do Lists</CardTitle>
               <CardDescription>Manage your tasks</CardDescription>
             </CardHeader>
-            <CardContent>Create and track to-dos.</CardContent>
+            <CardContent className="flex items-center gap-2">
+              <CheckSquare className="h-6 w-6 text-primary" />
+              Create and track to-dos.
+            </CardContent>
           </Card>
           <Card className="min-w-[18rem] snap-start bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
             <CardHeader>
               <CardTitle>Collaboration</CardTitle>
               <CardDescription>Share with team</CardDescription>
             </CardHeader>
-            <CardContent>Real-time note collaboration.</CardContent>
+            <CardContent className="flex items-center gap-2">
+              <Users className="h-6 w-6 text-primary" />
+              Real-time note collaboration.
+            </CardContent>
           </Card>
         </div>
       </section>
@@ -94,15 +112,15 @@ export default function Home() {
         <h2 className="text-3xl font-semibold text-center mb-8">What our users say</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">"This app boosted my productivity!"</CardContent>
+            <CardContent className="text-center">&ldquo;This app boosted my productivity!&rdquo;</CardContent>
             <CardFooter className="justify-center">Alice</CardFooter>
           </Card>
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">"Love the AI summaries feature."</CardContent>
+            <CardContent className="text-center">&ldquo;Love the AI summaries feature.&rdquo;</CardContent>
             <CardFooter className="justify-center">Bob</CardFooter>
           </Card>
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">"Clean UI and easy to use."</CardContent>
+            <CardContent className="text-center">&ldquo;Clean UI and easy to use.&rdquo;</CardContent>
             <CardFooter className="justify-center">Charlie</CardFooter>
           </Card>
         </div>
