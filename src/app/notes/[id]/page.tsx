@@ -17,7 +17,7 @@ export default function NotePage() {
   const [note, setNote] = useState<Note | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [summary, setSummary] = useState<string>(note?.summary || '');
+  const [summary, setSummary] = useState<string>('');
   const [loadingSummary, setLoadingSummary] = useState(false);
   const [errorSummary, setErrorSummary] = useState<string | null>(null);
   const params = useParams();
@@ -39,6 +39,7 @@ export default function NotePage() {
         if (error) throw error;
         
         setNote(data);
+        setSummary(data.summary || '');
       } catch (error: unknown) {
         console.error('Error fetching note:', error);
         setError('Failed to load note. It may have been deleted or you may not have permission to view it.');

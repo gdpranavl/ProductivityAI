@@ -1,2 +1,8 @@
 // This file sets up the Supabase auth callback and auth API routes
-export { GET, POST } from '@supabase/auth-helpers-nextjs';
+export async function GET() {
+  return new Response(null, { status: 200 });
+}
+
+export async function POST() {
+  return new Response(null, { status: 200 });
+}
