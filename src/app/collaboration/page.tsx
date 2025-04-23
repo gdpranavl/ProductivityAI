@@ -6,14 +6,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-interface Collaboration {
-  id: string;
-  user_id: string;
-  collaborator_id: string;
-  status: string;
-  created_at: string;
-}
-
 export default function CollaborationPage() {
   const [stats, setStats] = useState({ total: 0, pending: 0, score: 0 });
   const [daily, setDaily] = useState<{ date: string; count: number }[]>([]);

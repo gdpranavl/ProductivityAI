@@ -56,7 +56,7 @@ export default function DashboardPage() {
             <CardTitle>Daily Summary</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardDescription>Overview of today's highlights.</CardDescription>
+            <CardDescription>Overview of today&apos;s highlights.</CardDescription>
           </CardContent>
         </Card>
       </Link>
