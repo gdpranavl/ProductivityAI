@@ -134,6 +134,12 @@ export default function NotePage() {
         <div className="flex gap-2">
           <Button
             variant="outline"
+            onClick={() => router.push(`/notes/${id}/edit`)}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="outline"
             onClick={() => router.push('/notes')}
           >
             Back

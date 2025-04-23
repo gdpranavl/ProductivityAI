@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import type { User } from '@supabase/supabase-js';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
-export default function NotesLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
@@ -15,12 +14,10 @@ export default function NotesLayout({ children }: { children: React.ReactNode })
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
-      
       if (!user) {
         router.push('/login');
       }
     };
-
     getUser();
   }, [router]);
 
@@ -34,9 +31,7 @@ export default function NotesLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen flex flex-col">
       <header className="bg-white shadow dark:bg-gray-800">
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <Link href="/dashboard" className="text-2xl font-bold">
-            Productivity App
-          </Link>
+          <h1 className="text-2xl font-bold">Dashboard</h1>
           <div className="flex items-center gap-4">
             {user && <span>Hello, {user.email}</span>}
             <Button onClick={handleLogout} variant="outline">Logout</Button>

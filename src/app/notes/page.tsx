@@ -99,6 +99,9 @@ export default function NotesPage() {
                 <Link href={`/notes/${note.id}?autoSummarize=true`}>
                   <Button variant="outline" size="sm">AI Summarize</Button>
                 </Link>
+                <Link href={`/notes/${note.id}/edit`}>
+                  <Button variant="outline" size="sm">Edit</Button>
+                </Link>
                 <Link href={`/notes/${note.id}`}>
                   <Button variant="outline" size="sm">View</Button>
                 </Link>

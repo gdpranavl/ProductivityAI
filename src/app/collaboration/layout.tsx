@@ -7,21 +7,15 @@ import type { User } from '@supabase/supabase-js';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export default function NotesLayout({ children }: { children: React.ReactNode }) {
+export default function CollaborationLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+    supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
-      
-      if (!user) {
-        router.push('/login');
-      }
-    };
-
-    getUser();
+      if (!user) router.push('/login');
+    });
   }, [router]);
 
   const handleLogout = async () => {

@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
@@ -21,7 +22,7 @@ export default function Home() {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        router.push('/notes');
+        router.push('/dashboard');
       }
     };
 
@@ -33,8 +34,12 @@ export default function Home() {
       {/* Hero Section */}
       <section className="grid md:grid-cols-2 items-center gap-8 max-w-6xl w-full">
         <div className="space-y-6">
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-primary">Welcome to <i>the</i> Productivity App</h1>
-          <p className="text-lg text-gray-700">All-in-one productivity suite: notes, AI summaries, to-dos & collaboration.</p>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-primary">
+            Welcome to <i>the</i> Productivity App
+          </h1>
+          <p className="text-lg text-gray-700">
+            All-in-one productivity suite: notes, AI summaries, to-dos & collaboration.
+          </p>
           <div className="flex gap-4">
             <Button onClick={() => router.push('/login')}>Log In</Button>
             <Button variant="outline" onClick={() => router.push('/signup')}>Sign Up</Button>
@@ -50,6 +55,7 @@ export default function Home() {
           />
         </div>
       </section>
+
       {/* Feature Cards Carousel */}
       <section className="w-full max-w-6xl">
         <h2 className="text-3xl font-semibold mb-6">Features</h2>
@@ -106,24 +112,26 @@ export default function Home() {
           </Card>
         </div>
       </section>
+
       {/* Testimonials Section */}
       <section className="w-full bg-gray-50 py-16">
         <h2 className="text-3xl font-semibold text-center mb-8">What our users say</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">&ldquo;This app boosted my productivity!&rdquo;</CardContent>
+            <CardContent className="text-center">“This app boosted my productivity!”</CardContent>
             <CardFooter className="justify-center">Alice</CardFooter>
           </Card>
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">&ldquo;Love the AI summaries feature.&rdquo;</CardContent>
+            <CardContent className="text-center">“Love the AI summaries feature.”</CardContent>
             <CardFooter className="justify-center">Bob</CardFooter>
           </Card>
           <Card className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg">
-            <CardContent className="text-center">&ldquo;Clean UI and easy to use.&rdquo;</CardContent>
+            <CardContent className="text-center">“Clean UI and easy to use.”</CardContent>
             <CardFooter className="justify-center">Charlie</CardFooter>
           </Card>
         </div>
       </section>
+
       {/* Call to Action */}
       <section className="w-full max-w-md text-center">
         <h2 className="text-2xl font-bold mb-4">Ready to boost your productivity?</h2>
