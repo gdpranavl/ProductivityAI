@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notes AI Dashboard
+
+A modern, AI-powered note-taking and productivity app built with Next.js, Supabase, and Tailwind CSS. Manage notes, to-dos, daily summaries, and team collaborations with intuitive UI and real-time data.
+
+## Features
+
+- **User Authentication**: Signup, login, and secure sessions via Supabase Auth.
+- **Notes Management**: Create, edit, delete, and view detailed notes. Generate AI summaries on-demand.
+- **To-Do List**: Organize tasks with a dedicated to-dos page.
+- **Daily Summary**: Quick overview of daily highlights.
+- **Team Collaboration**: Invite collaborators, track shared activity, and visualize collaboration stats over time.
+- **Responsive Dashboard**: Carousels of cards with icons and previews for each section.
+
+## Tech Stack
+
+- **Framework**: Next.js App Router (v15) with Turbopack
+- **UI**: React, Tailwind CSS, Shadcn/ui components
+- **State & Data**: Supabase (Auth & Postgres)
+- **Charts**: Recharts for data visualization
+- **Icons**: React Icons (Heroicons set)
+- **AI**: Serverless API route for summary generation
+- **Linting & Types**: TypeScript, ESLint
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+- A Supabase project (refer to Supabase docs)
+
+### Installation
+
+```bash
+git clone https://github.com/yourusername/notes-ai.git
+cd notes-ai
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file at project root with:
+
+```dotenv
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+/README.md
+/app
+  /api
+    summarize.ts          # AI summary endpoint
+  /dashboard
+    layout.tsx            # Auth guard & layout
+    page.tsx              # Dashboard cards
+  /notes
+    [id]
+      page.tsx            # Note detail & summary
+    page.tsx              # Notes list
+  /todos
+    page.tsx              # To-do list
+  /daily-summary
+    page.tsx              # Daily summary view
+  /collaboration
+    page.tsx              # Collaboration stats
+/lib
+  supabaseClient.ts       # Supabase init
+/components/ui           # Reusable UI components (Card, Button, etc.)
+/public                  # Static assets
+/README.md
+```
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Development server
+- `npm run build` - Production build
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy on Vercel or any Next.js-compatible host:
 
-## Deploy on Vercel
+```bash
+npm run build
+npm run start
+```
+- **Vercel Demo**: https://productivity-ai-xi.vercel.app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Follow [Next.js deployment docs](https://nextjs.org/docs/deployment) for more.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Fork the repo
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+## License
+
+MIT License
